@@ -1,0 +1,10 @@
+1.class="cnnBody_Left wsodContent" - set this class for height 1024 , width 1024
+
+2. id="wsod_worldMarkets" height 1024 width 1024
+
+3. <iframe frameborder="0" scrolling="no" src="http://markets.money.cnn.com/worldmarkets/map.asp?region=Asia" 	width="617" height="313" style="
+						    width: 1024px;
+						    height: 1024px;
+	"></iframe>   
+
+4. class="wsodContent modern W3C pc chrome v48" zoom : 1.5

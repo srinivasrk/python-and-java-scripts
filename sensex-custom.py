@@ -4,12 +4,20 @@ from selenium.webdriver.common.keys import Keys
 from urllib2 import Request
 from urllib2 import urlopen
 from time import sleep
+import re
 import time
 from datetime import datetime
 import webbrowser
 
 driver = webdriver.Firefox()
-driver.get('file://' + "c:\sensexdata.html")
+try:
+    driver.get('file://' + "c:\sensexdata.html")
+except Exception:
+    open("sensexdata.html",'w')
+    driver.get('file://' + "c:\sensexdata.html")
+
+
+
 
 def get_news():
     url="http://money.cnn.com/data/world_markets/asia"
@@ -29,10 +37,18 @@ def get_news():
     scraping.find("body",{"class":"wsodContent"})['style']="zoom:1.5"
     scraping.find("body",{"class":"wsodContent"})['style']="-ms-zoom: 1.5;-webkit-zoom: 1.5;-moz-transform:  scale(1.9,1.9);transform-origin:0 0",
     "-moz-transform-origin: left center;"
+    
+    start = re.search('id="wsod_index_USN"',str(scraping))
+    startpos = start.start(0)
+
+    newtag = '<div id="wsod_index_USN class="wosd_boxOverlay""style="top:125px;left:400px;"><div class="wsod_boxIndexName">S&amp;P 500<span><span stream="changePct_575769"><span class="posData">+0.15%</span></span></span></div><div class="wsod_boxIndexTime">US - Closes in 1h</div></div>'
+    temp = str(scraping)
    
+             
     #print(scraping);
     with open("c:\sensexdata.html","w") as f:
-        f.write(str(scraping));
+        #f.write(str(scraping));
+        f.write(str(scraping))
    # webbrowser.open('file://' + "c:\sensexdata.html")
     driver.refresh()
     

@@ -11,10 +11,10 @@ import webbrowser
 
 driver = webdriver.Firefox()
 try:
-    driver.get('file://' + "c:\sensexdata.html")
+    driver.get('file://' + "customsensexdata.html") # for windows put c:\
 except Exception:
-    open("sensexdata.html",'w')
-    driver.get('file://' + "c:\sensexdata.html")
+    open("customsensexdata.html",'w')
+    driver.get('file://' + "customsensexdata.html") # for windows put c:\
 
 
 
@@ -39,14 +39,14 @@ def get_news():
     "-moz-transform-origin: left center;"
     
     start = re.search('id="wsod_index_USN"',str(scraping))
-    startpos = start.start(0)
+    startpos = start.start(0)-29
 
     newtag = '<div id="wsod_index_USN class="wosd_boxOverlay""style="top:125px;left:400px;"><div class="wsod_boxIndexName">S&amp;P 500<span><span stream="changePct_575769"><span class="posData">+0.15%</span></span></span></div><div class="wsod_boxIndexTime">US - Closes in 1h</div></div>'
     temp = str(scraping)
-   
+    print (temp[:startpos])
              
     #print(scraping);
-    with open("c:\sensexdata.html","w") as f:
+    with open("customsensexdata.html","w") as f: # for windows put c:\
         #f.write(str(scraping));
         f.write(str(scraping))
    # webbrowser.open('file://' + "c:\sensexdata.html")

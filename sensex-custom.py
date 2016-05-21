@@ -1,8 +1,8 @@
 from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
-from urllib2 import Request
-from urllib2 import urlopen
+from urllib import request
+from urllib.request import urlopen
 from time import sleep
 import re
 import time
